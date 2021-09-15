@@ -1,0 +1,4 @@
+﻿  Lab1(b).cpp
+D:\local_repository2\My_repository2\Lab1(b)\Header.h(25,21): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\local_repository2\My_repository2\Lab1(b)\Header.h(27,43): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  Lab1(b).vcxproj -> D:\local_repository2\My_repository2\Lab1(b)\Debug\Lab1(b).exe

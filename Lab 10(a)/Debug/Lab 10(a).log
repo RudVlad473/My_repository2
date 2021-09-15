@@ -1,0 +1,7 @@
+﻿  Lab 10(a).cpp
+D:\local_repository2\My_repository2\Lab 10(a)\Lab 10(a).cpp(27,80): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\local_repository2\My_repository2\Lab 10(a)\Lab 10(a).cpp(99,40): warning C4305: аргумент: усечение из "double" в "float"
+D:\local_repository2\My_repository2\Lab 10(a)\Lab 10(a).cpp(99,70): warning C4305: аргумент: усечение из "double" в "float"
+D:\local_repository2\My_repository2\Lab 10(a)\Lab 10(a).cpp(99,98): warning C4305: аргумент: усечение из "double" в "float"
+D:\local_repository2\My_repository2\Lab 10(a)\Lab 10(a).cpp(99,163): warning C4305: аргумент: усечение из "double" в "float"
+  Lab 10(a).vcxproj -> D:\local_repository2\My_repository2\Lab 10(a)\Debug\Lab 10(a).exe
