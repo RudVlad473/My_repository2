@@ -5,17 +5,12 @@ using namespace std;
 class Figure
 {
 
-    int r;
     int a, b, c;
 public:
-    Figure();
     
-    Figure(int);
-    Figure(int, int, int);
+    Figure(int = 0, int = 0, int = 0);
 
-    float triangle_square() const;
-    
-    float circle_square() const;
+    float compute_square();
     
     
     

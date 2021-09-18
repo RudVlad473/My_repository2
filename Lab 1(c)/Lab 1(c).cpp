@@ -6,6 +6,7 @@
 int main()
 {
     Complex n(5, -4);
+    Complex n1(9, 23);
     n.show_complex();
 
     cout << endl;
@@ -23,6 +24,17 @@ int main()
     cout << endl;
 
     n.add_complex(5, 4);
+    
+
     n.show_complex();
+
+    cout << endl << endl;
+
+    Complex n2(1, 2);
+    Complex n3(3, 4);
+    
+
+    n2.add_complex(n3);
+    n2.show_complex();
 }
 

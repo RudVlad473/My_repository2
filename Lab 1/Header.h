@@ -20,6 +20,7 @@ public:
     int Getoutmem() const;
     int GetminRam() const;
     int Getcost() const;
+    void GetAll(string&, string&, int&, int&, int&) const;
 
 
     void SetName(const string&);
@@ -27,7 +28,7 @@ public:
     void Setoutmem(const int&);
     void SetminRam(const int&);
     void Setcost(const int&);
-   
+    void SetAll(const string&, const string&, const int&, const int&, const int&);
 
 
     void ShowAll() const;

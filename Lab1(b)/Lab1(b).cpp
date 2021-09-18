@@ -5,10 +5,10 @@
 int main()
 {
 	Figure circle(3);
-	cout << circle.circle_square();
+	cout << circle.compute_square() << endl;
 
 	Figure triangle(3, 4, 5);
-	cout << endl << triangle.triangle_square();
+	cout << endl << triangle.compute_square();
 		
 }
 

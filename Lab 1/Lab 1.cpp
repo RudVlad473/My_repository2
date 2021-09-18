@@ -4,6 +4,7 @@
 int main()
 {
     setlocale(LC_ALL, "ru");
+
     Opers OS2("OS/2", "DB2", 130, 22, 3343);
     cout << "\nИнициализация объекта через конструктор:\n";
     OS2.ShowAll();

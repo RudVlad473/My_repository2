@@ -1,3 +1,4 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (Lab1(3).vcxproj).  Это может привести к ошибкам очистки и перестроения.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (Lab1(3).vcxproj).  Это может привести к ошибкам очистки и перестроения.
   Lab1(3).cpp
-  Lab1(3).vcxproj -> D:\local_repository\My_repository\Lab1(3)\Debug\Lab1(а).exe
+D:\local repository 2\My_repository2\Lab1(a)\Lab1(3).cpp(6,11): warning C4930: Point dot3(void): функция с прототипом не вызвана (предполагалось определение переменной?)
+  Lab1(3).vcxproj -> D:\local repository 2\My_repository2\Lab1(a)\Debug\Lab1(а).exe

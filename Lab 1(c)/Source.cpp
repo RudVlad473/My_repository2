@@ -6,6 +6,12 @@ void Complex::add_complex(const int &r_value, const int &m_value)
     m += m_value;
 }
 
+void Complex::add_complex(const Complex& complex)
+{
+    this->r += complex.r;
+    this->m += complex.m;
+}
+
 void Complex::show_complex() const
 {
     if (m > 0) { cout << r << " + " << m << "i"; }

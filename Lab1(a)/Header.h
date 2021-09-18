@@ -10,9 +10,9 @@ class Point
     int x;
     int y;
 public:
-    Point();
+    //Point();
 
-    Point(const int& value_x = 0, const int& value_y = 0);
+    Point(const int& , const int& );
 
     Point(const Point& obj);
     void set_x(const int& value);
@@ -23,6 +23,7 @@ public:
 
 
     void sum_and_multiply(int& sum_var, int& mult_var) const;
+    void sum_and_multiply(int* sum_var, int* mult_var) const;
 
     void show_results() const;
     

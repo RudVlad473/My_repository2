@@ -1,20 +1,22 @@
 #include "Header.h"
 
-float Figure:: triangle_square() const
+Figure::Figure(int a, int b, int c)
 {
-    int p = (a + b + c) / 2;
-    return (sqrt(p * (p - a) * (p - b) * (p - c)));
+	if (a < 0) this->a = 0;
+	else this->a = a;
+
+	if (b < 0) this->b = 0;
+	else this->b = b;
+
+	if (c < 0) this->c = 0;
+	else this->c = c;
 }
 
-float Figure:: circle_square() const { return (r * r * 3.141); }
-
-Figure::Figure() { r = a = b = c = 0; }
-
-Figure::Figure(int radius = 0) { r = radius; a = b = c = 0; }
-Figure::Figure(int a1, int b1, int c1)
+float Figure::compute_square()
 {
-    r = 0;
-    a = a1;
-    b = b1;
-    c = c1;
+	if (a != 0 && (b == 0 && c == 0)) { return a * a * 3.141; }
+	else {
+		int p = (a + b + c) / 2;
+		return (sqrt(p * (p - a) * (p - b) * (p - c)));
+	}
 }

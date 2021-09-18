@@ -7,20 +7,28 @@ void Point::sum_and_multiply(int& sum_var, int& mult_var) const
 }
 void Point::show_results() const
 {
-    cout << "Переменная x = " << x << endl;
+    cout << "\nПеременная x = " << x << endl;
     cout << "Переменная y = " << y << endl;
     cout << "Сумма x,y = " << x + y << endl;
     cout << "Произведение x,y = " << x * y << endl;
 }
 
-Point::Point()
+void Point::sum_and_multiply(int* sum, int* mult_var) const
 {
-    x = 0;
-    y = 0;
+    *sum = x + y;
+    *mult_var = x * y;
 }
+
+//Point::Point()
+//{
+//    cout << "1";
+//    x = 0;
+//    y = 0;
+//}
 
 Point::Point(const int& value_x = 0, const int& value_y = 0)
 {
+    //cout << "2";
     x = value_x;
     y = value_y;
 }

@@ -19,6 +19,7 @@ public:
     void add_to_m(const int&);
 
     void add_complex(const int&, const int&);
+    void add_complex(const Complex &);
    
     void show_complex() const;
     
