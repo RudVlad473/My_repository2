@@ -36,19 +36,34 @@ Master::Master()
     FIO = "";
     dogcount = 0;
     dogs = nullptr;
-    this->add_master();
+    //this->add_master(Master("None"));
 }
 
-Master::Master(Master& master)
+Master::Master(string name)
 {
-    master.count = this->count;
-    master.dogcount = this->dogcount;
-    master.FIO = this->FIO;
-    for (int i = 0; i < this->dogcount; ++i) { master.add_dog(this->dogs[i]); }
-    for (int i = 0; i < this->count; ++i) { master.add_master(this->masters[i]); }  
+    this->FIO = name;
 }
 
-void Master::set_FIO(string theFIO, int dogcount) { FIO = theFIO; }
+Master::Master(const Master& master)
+{
+    this->count = master.count;
+    this->dogcount = master.dogcount;
+    this->FIO = master.FIO;
+    for (int i = 0; i < master.dogcount; ++i) { this->add_dog(master.dogs[i]); }
+    //for (int i = 0; i < this->count; ++i) { this->add_master(master.masters1[i]); }
+}
+
+Master Master::operator =(const Master& master)
+{
+    this->count = master.count;
+    this->dogcount = master.dogcount;
+    this->FIO = master.FIO;
+    for (int i = 0; i < master.dogcount; ++i) { this->add_dog(master.dogs[i]); }
+    //for (int i = 0; i < this->count; ++i) { this->add_master(master.masters1[i]); }
+    return *this;
+}
+
+void Master::set_FIO(string theFIO) { FIO = theFIO; }
 
 int Master::get_dogcount() { return dogcount; }
 
@@ -76,19 +91,19 @@ void Master::add_dog(Dog dog = Dog())
     }
 }
 
-void Master::add_master(Master master = Master())
+void Master::add_master(Master master = Master(), Master *&masters)
 {
     if (masters == nullptr)
     {
         ++count;
 
         masters = new Master[count];
-        masters[0] = master ;
+        masters[0] = master;
     }
     else
     {
         Master* dummyArr = new Master[count];
-        for (int l = 0; l < count; ++l) { dummyArr[l] = this->masters[l]; }
+        for (int l = 0; l < count; ++l) { dummyArr[l] = masters[l]; }
 
         delete[] masters;
         masters = new Master[count + 1];
@@ -98,6 +113,13 @@ void Master::add_master(Master master = Master())
         delete[] dummyArr;
         ++count;
     }
+}
+
+
+Dog Master::get_dog(int i)
+{
+
+    return this->dogs[i];
 }
 
 void Master::show_dogs()
@@ -115,10 +137,21 @@ void Master::show_dogs()
     }
 }
 
+void Master::show_masters(Master *masters)
+{
+    for (int i = 0; i < this->count; ++i) 
+    {
+        if (i == 0) cout << "\nКол-во членов клуба: " << this->count << endl;
+        cout << "\nКол-во собак у мастера:" << masters[i].dogcount;
+        cout << "ФИО: " << masters[i].FIO << endl << endl;
+    }
+    
+}
+
 Master::~Master() 
 { 
     delete[] dogs;
-    delete[] masters;
+    //delete[] masters1;
 }
 
 

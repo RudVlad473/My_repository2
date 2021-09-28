@@ -1,15 +1,5 @@
 ﻿  Lab 1(d).cpp
   master_and_dog.cpp
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.cpp(76,20): error C2280: "Master &Master::operator =(const Master &)": предпринята попытка ссылки на удаленную функцию
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70): message : в этом месте создано компилятором: "Master::operator ="
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70,1): message : "Master &Master::operator =(const Master &)": функция неявно удалена, так как в "Master" содержится элемент данных "Master::ID" не являющегося классом типа с квалификатором const.
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(43): message : см. объявление "Master::ID"
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.cpp(81,55): error C2280: "Master &Master::operator =(const Master &)": предпринята попытка ссылки на удаленную функцию
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70): message : в этом месте создано компилятором: "Master::operator ="
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70,1): message : "Master &Master::operator =(const Master &)": функция неявно удалена, так как в "Master" содержится элемент данных "Master::ID" не являющегося классом типа с квалификатором const.
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(43): message : см. объявление "Master::ID"
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.cpp(86,54): error C2280: "Master &Master::operator =(const Master &)": предпринята попытка ссылки на удаленную функцию
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70): message : в этом месте создано компилятором: "Master::operator ="
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(70,1): message : "Master &Master::operator =(const Master &)": функция неявно удалена, так как в "Master" содержится элемент данных "Master::ID" не являющегося классом типа с квалификатором const.
-D:\local_repository2\My_repository2\Lab 1(d)\master_and_dog.h(43): message : см. объявление "Master::ID"
   Создание кода...
+master_and_dog.obj : error LNK2001: неразрешенный внешний символ "private: static class Master * Master::masters1" (?masters1@Master@@0PAV1@A).
+D:\local_repository2\My_repository2\Lab 1(d)\Debug\Lab 1(d).exe : fatal error LNK1120: неразрешенных внешних элементов: 1
