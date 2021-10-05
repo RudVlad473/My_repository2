@@ -13,31 +13,35 @@ private:
 public:
     ArrayOfNums();
     
-    ArrayOfNums(int size);
+    ArrayOfNums(const int &size);
 
-    ArrayOfNums(int amountofnums, int min, int max);
+    ArrayOfNums(const int &amountofnums, const int &min, const int &max);
     
     ArrayOfNums(const ArrayOfNums& a);
 
-    ArrayOfNums(ArrayOfNums& a, int max_value);
+    ArrayOfNums(const ArrayOfNums& a, const int &max_value);
     
     ~ArrayOfNums();
 
 
-    int get_size();
+    int get_size() const;
 
     void fill_no_repeat();
     
-    void show_arr();
+    void show_arr() const;
     
-    int find_max();
-    
+    int find_max() const;
 
-    ArrayOfNums Union(ArrayOfNums newarr);
     
-    ArrayOfNums Intersection(ArrayOfNums newarr);
+    ArrayOfNums& operator = (const ArrayOfNums& obj);
+
+    ArrayOfNums Union(const ArrayOfNums &newarr);
     
-    ArrayOfNums Difference(ArrayOfNums newarr);
+    ArrayOfNums Intersection(const ArrayOfNums &newarr);
+    
+    void Difference(const ArrayOfNums &newarr, ArrayOfNums& to_arr);
+
+    void Disjunctive_sum(const ArrayOfNums& newarr, ArrayOfNums& to_arr);
 
     
 

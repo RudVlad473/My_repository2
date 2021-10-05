@@ -91,7 +91,7 @@ void Master::add_dog(Dog dog = Dog())
     }
 }
 
-void Master::add_master(Master master = Master(), Master *&masters)
+void Master::add_master(Master*& masters, Master master = Master())
 {
     if (masters == nullptr)
     {

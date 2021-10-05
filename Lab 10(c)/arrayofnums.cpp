@@ -18,13 +18,15 @@ ArrayOfNums::ArrayOfNums()
     }
 }
 
-ArrayOfNums::ArrayOfNums(int size)
+ArrayOfNums::ArrayOfNums(const int &size)
 {  
+    //if (this->arr != nullptr) this->~ArrayOfNums();
+    if (size < 0) exit(0);
     this->size = size;
-    arr = new int[size] {};
+    this->arr = new int[this->size] {};
 }
 
-ArrayOfNums::ArrayOfNums(int amountofnums, int min, int max)
+ArrayOfNums::ArrayOfNums(const int &amountofnums, const int &min, const int &max)
 {
     size = amountofnums;
     arr = new int[amountofnums];
@@ -42,7 +44,7 @@ ArrayOfNums::ArrayOfNums(int amountofnums, int min, int max)
     }
 }
 
-ArrayOfNums::ArrayOfNums(ArrayOfNums& a, int max_value)
+ArrayOfNums::ArrayOfNums(const ArrayOfNums& a, const int &max_value)
 {
     this->size = a.size;
     arr = new int[this->size];
@@ -56,6 +58,7 @@ ArrayOfNums::ArrayOfNums(ArrayOfNums& a, int max_value)
 
 ArrayOfNums::ArrayOfNums(const ArrayOfNums& a)
 {  
+    //if (this->arr != nullptr) this->~ArrayOfNums();
     this->size = a.size;
     this->arr = new int[this->size];
     for (int i = 0; i < this->size; ++i) this->arr[i] = a.arr[i];
@@ -65,9 +68,10 @@ ArrayOfNums::ArrayOfNums(const ArrayOfNums& a)
 ArrayOfNums::~ArrayOfNums()
 {
     delete[]this->arr; 
+    this->arr = nullptr;
 }
 
-int ArrayOfNums::get_size()
+int ArrayOfNums::get_size() const
 {
     return size;
 }
@@ -76,7 +80,7 @@ void ArrayOfNums::fill_no_repeat()
 {
     for (int i = 0; i < size; ++i)
     {
-        arr[i] = (rand() % 41 - 20);
+        arr[i] = (rand() % 11);
         for (int j = 0; j < i; j++)
         {
             if (arr[i] == arr[j])
@@ -88,24 +92,36 @@ void ArrayOfNums::fill_no_repeat()
     }
 }
 
-void ArrayOfNums::show_arr()
+void ArrayOfNums::show_arr() const
 {
+    
+    
     for (int i = 0; i < this->size; ++i)
     {
+        
         if (i % 5 == 0 && i != 0) cout << endl;
         cout << setw(4) << arr[i];
 
     }
 }
 
-int ArrayOfNums::find_max()
+int ArrayOfNums::find_max() const
 {
     int max_value = 0;
     for (int i = 0; i < size; ++i) { if (max_value < arr[i]) max_value = arr[i]; }
     return max_value;
 }
 
-ArrayOfNums ArrayOfNums::Union(ArrayOfNums newarr)
+ArrayOfNums& ArrayOfNums::operator = (const ArrayOfNums& obj)
+{
+    if (this->arr != nullptr) this->~ArrayOfNums();
+    this->size = obj.size;
+    this->arr = new int[this->size];
+    for (int i = 0; i < this->size; ++i) this->arr[i] = obj.arr[i];
+    return *this;
+}
+
+ArrayOfNums ArrayOfNums::Union(const ArrayOfNums &newarr)
 {
     
     ArrayOfNums union_arr(this->size + newarr.size);
@@ -114,7 +130,7 @@ ArrayOfNums ArrayOfNums::Union(ArrayOfNums newarr)
     return union_arr;
 }
 
-ArrayOfNums ArrayOfNums::Intersection(ArrayOfNums newarr)
+ArrayOfNums ArrayOfNums::Intersection(const ArrayOfNums &newarr)
 {
     int newsize = 0;
     for (int i = 0; i < this->size; ++i)
@@ -138,34 +154,125 @@ ArrayOfNums ArrayOfNums::Intersection(ArrayOfNums newarr)
     return interarr;
 }
 
-ArrayOfNums ArrayOfNums::Difference(ArrayOfNums newarr)
+void ArrayOfNums::Difference(const ArrayOfNums &newarr, ArrayOfNums &to_arr)
 {
-    ArrayOfNums interarr = this->Intersection(newarr);
-    ArrayOfNums differencearr(this->size - interarr.size);
+    //ArrayOfNums interarr = this->Intersection(newarr);
+    //ArrayOfNums differencearr(this->size - interarr.size);
 
-    int temp;
+    //int temp;
 
-    for (int i = 0; i < this->size; ++i) 
+    //for (int i = 0; i < this->size; ++i) 
+    //{
+    //    temp = this->arr[i - 1];
+
+    //    for (int j = 0; j < interarr.size; ++j)
+    //    {
+    //        if (temp == interarr.arr[j])
+    //        {
+    //            i++;
+    //            goto duplicate; //added this line
+    //        }
+    //    }
+
+    //    differencearr.arr[i] = this->arr[i - 1];
+    //    duplicate:
+    //    int k = 0;
+
+    //}
+    //
+
+    //return differencearr;
+
+    /*Нахождение массива, содержащего дубликаты*/
+    int duplics_count = 0;
+    for (int i = 0; i < this->size; ++i)
     {
-        temp = this->arr[i - 1];
-
-        for (int j = 0; j < interarr.size; ++j)
+        for (int j = 0; j < newarr.size; ++j)
         {
-            if (temp == interarr.arr[j])
+            if (this->arr[i] == newarr.arr[j]) ++duplics_count;
+        }
+    }
+
+    if (duplics_count == 0)
+    {
+        to_arr = *this;
+        return;
+    }
+
+    ArrayOfNums duplics_arr(duplics_count);
+   
+    for (int i = 0, k = 0; i < this->size; ++i)
+    {
+        for (int j = 0; j < newarr.size; ++j)
+        {
+            if (this->arr[i] == newarr.arr[j])
             {
-                i++;
-                goto duplicate; //added this line
+                duplics_arr.arr[k] = this->arr[i];
+                ++k;
             }
         }
-
-        differencearr.arr[i] = this->arr[i - 1];
-        duplicate:
-        int k = 0;
-
     }
-    
+    /*------------------------------------*/
+    /*cout << "\nМассив дублов:\n";
+    duplics_arr.show_arr();
+    cout << endl;*/
 
-    return differencearr;
+    ArrayOfNums differarr(this->size - duplics_count);
+
+    for (int i = 0, k = 0; i < this->size; ++i)
+    {
+        
+        for (int j = 0; j < newarr.size; ++j)
+        {
+            if (this->arr[i] == duplics_arr.arr[j])
+            {
+                break;
+            }
+            else if (j == (newarr.size-1))
+            {
+                differarr.arr[k] = this->arr[i];
+                ++k;
+            }
+            
+        }
+    }
+
+    to_arr = differarr;
+
 
    
+}
+
+void ArrayOfNums::Disjunctive_sum(const ArrayOfNums& newarr, ArrayOfNums& to_arr)
+{
+    ArrayOfNums intersec = this->Intersection(newarr);
+    /*cout << "\nМассив пересеч.:\n";
+    intersec.show_arr();
+    cout << endl;*/
+
+
+    ArrayOfNums unionarr = this->Union(newarr);
+    /*cout << "\nМассив объед.:\n";
+    unionarr.show_arr();
+    cout << endl;*/
+    ArrayOfNums resultarr(unionarr.size - 2*intersec.size);
+    for (int i = 0, k = 0; i < unionarr.size; ++i)
+    {
+
+        for (int j = 0; j < intersec.size; ++j)
+        {
+            if (unionarr.arr[i] == intersec.arr[j])
+            {
+                break;
+            }
+            else if (j == (intersec.size - 1))
+            {
+                resultarr.arr[k] = unionarr.arr[i];
+                ++k;
+            }
+
+        }
+    }
+
+    to_arr = resultarr;
 }

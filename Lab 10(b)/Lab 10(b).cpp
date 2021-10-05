@@ -8,29 +8,50 @@ class two_d_matr
     int strokes;
     int columns;
 public:
-
-    two_d_matr(two_d_matr& obj)
+    two_d_matr()
     {
+        this->strokes = 0;
+        this->columns = 0;
+        this->matr = nullptr;
+    }
+
+    two_d_matr(const two_d_matr& obj)
+    {
+
+    }
+
+    two_d_matr& operator =(const two_d_matr &obj)
+    {
+        if (this->matr != nullptr) this->~two_d_matr();
+
         this->strokes = obj.strokes;
         this->columns = obj.columns;
-        if (this->matr != nullptr)
+
+        this->matr = new int* [this->strokes]{};
+        for (int i = 0; i < this->strokes; ++i) this->matr[i] = new int[this->columns]{};
+
+
+        for (int i = 0; i < this->strokes; ++i)
         {
-            for (int i = 0; i < this->strokes; ++i) delete[] matr[i];
-            delete[] matr;
+            for (int j = 0; j < this->columns; ++j)
+            {
+                this->matr[i][j] = obj.matr[i][j];
+            }
         }
-        matr = new int* [this->strokes]{};
-        for (int i = 0; i < this->strokes; ++i) matr[i] = new int[this->columns]{};
+
+        return *this;
     }
 
     two_d_matr(int strokes, int columns)
     {
+        if (strokes < 0 || columns < 0) exit(0);
         this->strokes = strokes;
         this->columns = columns;
         matr = new int* [strokes] {};
         for (int i = 0; i < strokes; ++i) matr[i] = new int[columns] {};
     }
 
-    two_d_matr take_out_submatr(int stroke_pos, int column_pos, int stroke_num, int column_num)
+    void take_out_submatr(int stroke_pos, int column_pos, int stroke_num, int column_num, two_d_matr &obj)
     {
 
         if (stroke_pos < 0 || stroke_pos > this->strokes 
@@ -39,15 +60,16 @@ public:
        
         two_d_matr temp(stroke_num, column_num);
 
-        for (int i = stroke_pos, n = 0; i < stroke_num; ++i,++n)
+        for (int i = stroke_pos, n = 0; i <= stroke_num; ++i, ++n)
         {
-            for (int j = column_pos, m = 0; j < column_num; ++j, ++m) temp.set_num_by_coords(n, m, this->matr[i][j]);
+            for (int j = column_pos, m = 0; j <= column_num; ++j, ++m)
+            {
+                temp.matr[n][m] = this->matr[i][j];
+            }
         }
+        
+        obj = temp;
 
-
-
-
-        return temp;
         
     }
 
@@ -62,9 +84,10 @@ public:
 
     void show_matr()
     {
-        for (int i = 0; i < strokes; ++i)
+
+        for (int i = 0; i < this->strokes; ++i)
         {
-            for (int j = 0; j < columns; ++j)  cout << setw(4) << matr[i][j];
+            for (int j = 0; j < this->columns; ++j)  cout << setw(4) << this->matr[i][j];
             cout << endl;
         }
     }
@@ -100,8 +123,13 @@ public:
 
     ~two_d_matr() 
     {
-        for (int i = 0; i < this->strokes; ++i) delete[] matr[i];         
-        delete[] matr;
+        //cout << "\nУдаляю " << matr;
+        for (int i = 0; i < this->strokes; ++i)
+        {
+            delete[] this->matr[i];
+        }
+        delete[] this->matr;
+        this->matr = nullptr;
     }
 };
 
@@ -109,14 +137,16 @@ public:
 
 int main()
 {
+    setlocale(LC_ALL, "ru");
     srand(time(NULL));
     
     two_d_matr matr1(4, 4);
     matr1.generate_matr();
     matr1.show_matr();
     
-    two_d_matr matr2(1, 1);
-    matr2 = matr1.take_out_submatr(1, 1, 3, 2);
+    two_d_matr matr2;
+    matr1.take_out_submatr(1, 1, 3, 2, matr2);
+    cout << endl;
     matr2.show_matr();
     
 }

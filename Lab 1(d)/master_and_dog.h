@@ -76,7 +76,7 @@ public:
 
     void add_dog(Dog dog);
 
-    void add_master(Master, Master*&);
+    void add_master(Master*&, Master);
 
     void show_masters(Master*);
 

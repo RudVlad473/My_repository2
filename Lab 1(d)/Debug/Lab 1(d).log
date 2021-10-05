@@ -1,5 +1,4 @@
 ﻿  Lab 1(d).cpp
   master_and_dog.cpp
   Создание кода...
-master_and_dog.obj : error LNK2001: неразрешенный внешний символ "private: static class Master * Master::masters1" (?masters1@Master@@0PAV1@A).
-D:\local_repository2\My_repository2\Lab 1(d)\Debug\Lab 1(d).exe : fatal error LNK1120: неразрешенных внешних элементов: 1
+  Lab 1(d).vcxproj -> D:\local_repository2\My_repository2\Lab 1(d)\Debug\Lab 1(d).exe

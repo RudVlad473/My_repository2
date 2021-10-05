@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-
+#include <string>
 using namespace std;
 
 class Train
@@ -29,7 +29,14 @@ public:
 		
 	}
 
-	void show() { cout << point_of_dist << endl << train_num << endl << start_time << endl; }
+	void show()
+	{
+		cout << point_of_dist << endl << train_num << endl;
+		if (this->start_time - int(this->start_time) > 0.1)
+		{
+			cout << this->start_time << "0" << endl;
+		}
+	}
 	
 
 	int get_train_num() { return this->train_num; }
@@ -96,11 +103,14 @@ void sortby_pointofdist(Train* arr, int size)
 int main()
 {
 	setlocale(LC_ALL, "ru");
-	Train a("Харьков", 1234, 13.30), b("Львов", 2345, 14.55), c("Киев", 3456, 19.45), d("Луганск", 4567, 20.00), e("Одесса", 5678, 1.30);
+	Train a("Харьков", 1111, 13.30), b("Львов", 4444, 14.55), c("Киев", 4312, 19.45), d("Луганск", 3211, 20.00), e("Одесса", 6666, 1.30);
 	const int size = 5;
 	Train trains[size]{ a,b,c,d,e };
 
-	for (int i = 0; i < size; ++i) { trains[i].show(); cout << endl;
+	for (int i = 0; i < size; ++i) 
+	{ 
+		trains[i].show(); 
+		cout << endl;
 	}
 	
 	sortby_trainnum(trains, size);
